@@ -17,8 +17,9 @@
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: true">
       
-      <!-- The mobile device's camera with GPS support -->
-      <a-camera gps-camera rotation-reader></a-camera>
+      <!-- The mobile device's camera with GPS support.
+           Added simulateLatitude and simulateLongitude for testing and fallback in case geolocation isn't available or ready. -->
+      <a-camera gps-camera rotation-reader simulateLatitude="37.7749" simulateLongitude="-122.4194"></a-camera>
       
       <!-- AR objects will be spawned dynamically via JS -->
       
