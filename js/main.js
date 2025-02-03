@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const el = document.createElement(shapeTag);
     const objId = 'object' + (i + 1);
     el.setAttribute('id', objId);
+    // Use AR.js's gps-entity-place component for positioning.
     el.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${lon};`);
 
     // Set attributes based on the type of object
