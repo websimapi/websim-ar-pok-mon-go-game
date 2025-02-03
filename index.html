@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AR Pokémon Go Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- A-Frame and AR.js libraries -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin:0; overflow:hidden;">
+    <!-- AR Scene using GPS mode -->
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; gpsMinAccuracy: 100;"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true">
+      
+      <!-- The mobile device's camera with GPS support -->
+      <a-camera gps-camera rotation-reader></a-camera>
+
+      <!-- Three AR objects with sample GPS coordinates (example: San Francisco coordinates) -->
+      <a-box id="object1"
+        gps-entity-place="latitude: 37.7749; longitude: -122.4194;"
+        material="color: #EF2D5E;"
+        depth="2" height="2" width="2"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 4000">
+      </a-box>
+
+      <a-sphere id="object2"
+        gps-entity-place="latitude: 37.7750; longitude: -122.4190;"
+        material="color: #FFC65D;"
+        radius="1.5"
+        animation="property: position; dir: alternate; dur: 3000; loop: true; to: 0 2 0">
+      </a-sphere>
+
+      <a-cone id="object3"
+        gps-entity-place="latitude: 37.7751; longitude: -122.4185;"
+        material="color: #7BC8A4;"
+        radius-bottom="1.5" radius-top="0" height="3"
+        animation="property: scale; dir: alternate; dur: 3500; loop: true; to: 1.2 1.2 1.2">
+      </a-cone>
+      
+    </a-scene>
+
+    <!-- Mini Map Overlay -->
+    <div id="minimap">
+      <svg id="minimap-svg" viewBox="0 0 200 200">
+        <!-- Background circle for the minimap -->
+        <circle cx="100" cy="100" r="98" fill="#eee" stroke="#ccc" stroke-width="4"></circle>
+        <!-- User marker (always at the center) -->
+        <circle id="user-marker" cx="100" cy="100" r="5" fill="blue"></circle>
+        <!-- AR Objects markers. Their positions will update based on GPS differences -->
+        <circle id="marker1" cx="50" cy="50" r="4" fill="#EF2D5E"></circle>
+        <circle id="marker2" cx="150" cy="50" r="4" fill="#FFC65D"></circle>
+        <circle id="marker3" cx="100" cy="150" r="4" fill="#7BC8A4"></circle>
+      </svg>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
