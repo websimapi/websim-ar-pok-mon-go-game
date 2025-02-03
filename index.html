@@ -18,28 +18,8 @@
       
       <!-- The mobile device's camera with GPS support -->
       <a-camera gps-camera rotation-reader></a-camera>
-
-      <!-- Three AR objects with sample GPS coordinates (example: San Francisco coordinates) -->
-      <a-box id="object1"
-        gps-entity-place="latitude: 37.7749; longitude: -122.4194;"
-        material="color: #EF2D5E;"
-        depth="2" height="2" width="2"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 4000">
-      </a-box>
-
-      <a-sphere id="object2"
-        gps-entity-place="latitude: 37.7750; longitude: -122.4190;"
-        material="color: #FFC65D;"
-        radius="1.5"
-        animation="property: position; dir: alternate; dur: 3000; loop: true; to: 0 2 0">
-      </a-sphere>
-
-      <a-cone id="object3"
-        gps-entity-place="latitude: 37.7751; longitude: -122.4185;"
-        material="color: #7BC8A4;"
-        radius-bottom="1.5" radius-top="0" height="3"
-        animation="property: scale; dir: alternate; dur: 3500; loop: true; to: 1.2 1.2 1.2">
-      </a-cone>
+      
+      <!-- AR objects will be spawned dynamically via JS -->
       
     </a-scene>
 
@@ -50,10 +30,8 @@
         <circle cx="100" cy="100" r="98" fill="#eee" stroke="#ccc" stroke-width="4"></circle>
         <!-- User marker (always at the center) -->
         <circle id="user-marker" cx="100" cy="100" r="5" fill="blue"></circle>
-        <!-- AR Objects markers. Their positions will update based on GPS differences -->
-        <circle id="marker1" cx="50" cy="50" r="4" fill="#EF2D5E"></circle>
-        <circle id="marker2" cx="150" cy="50" r="4" fill="#FFC65D"></circle>
-        <circle id="marker3" cx="100" cy="150" r="4" fill="#7BC8A4"></circle>
+        <!-- Container for AR object markers -->
+        <g id="minimap-markers"></g>
       </svg>
     </div>
 
